@@ -1,0 +1,263 @@
+*, ::after, ::before {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #172d24;
+    --cor-destaque: #e99b38;
+    --cor-fundo: #f7f5ef;
+    --cor-card: #ffffff;
+    --cor-texto: #26332b;
+    --cor-texto-secundario: #69746c;
+    --cor-borda: #e2e5df;
+    --cor-erro: #b42318;
+    --cor-sucesso: #216e42;
+    --raio: 12px;
+}
+
+body {
+    background-color:var(--cor-fundo);
+    color:var(--cor-texto);
+    font-family: "Inter", sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+button:focus-visible, input:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+.header {
+    padding: 36px 20px;
+    text-align: center;
+    color: #ffffff;
+    background-color: var(--cor-principal);
+}
+
+header h1 {
+    font-family: "Bree Serif", serif;
+    font-size:3rem;
+    font-weight: 400;
+}
+
+header p {
+    font-size:1rem;
+    color: #e0e8e1;
+    margin: 8px 0 0;
+}
+
+main {
+    margin: 25px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
+}
+
+.cardapio, .carrinho, .fazer-pedido {
+    width:370px;
+    padding:20px;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    box-shadow: 0 4px 16px rgb(23 45 36 / 5%);
+}
+
+.cardapio h2, .carrinho h2, .fazer-pedido h2 {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size:1.7rem;
+}
+
+.carrinho h2 {
+    margin-bottom:20px;
+
+}
+
+#formulariobusca,
+#formulariopedido {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top:20px;
+}
+
+input {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    color: var(--cor-texto);
+    background: #ffffff;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+}
+
+input::placeholder {
+    color: #89928b;
+}
+
+#formulariobusca {
+    margin-bottom: 12px;
+}
+
+.mensagem {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+#resultado-busca {
+    margin: 8px 0;
+}
+
+.lista-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.item-cardapio, .item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+}
+
+.item-cardapio span, .item-carrinho span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 0.93rem;
+    font-weight: 500;
+}
+
+
+.botao {
+    min-height: 40px;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.botao:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.botao-adicionar, .botao-principal {
+    color: #ffffff;
+    background: var(--cor-principal);
+}
+
+.botao-adicionar:hover, .botao-principal:hover {
+    background: #294b39;
+}
+
+.botao-remover {
+    flex-shrink: 0;
+    color: #a12b23;
+    background: #fff0ed;
+}
+
+.botao-remover:hover {
+    background: #ffe0da;
+}
+
+.botao-secundario {
+    margin-top: 18px;
+    color: var(--cor-principal);
+    background: #edf1eb;
+}
+
+.botao-secundario:hover:not(:disabled) {
+    background: #dfe8dd;
+}
+
+.resumo {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f4f6f1;
+    border-radius: 8px;
+}
+
+.resumo p {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 5px 0;
+}
+
+.resumo p:last-child {
+    padding-top: 10px;
+    border-top: 1px solid var(--cor-borda);
+    font-weight: 700;
+}
+
+#resumo-quantidade {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+    padding-bottom:10px;
+}
+
+.botao-principal {
+    margin-top: 12px;
+    padding: 13px 18px;
+}
+
+.erro {
+    color: var(--cor-erro);
+    font-size: 0.875rem;
+}
+
+.confirmacao {
+    margin-top: 24px;
+    padding: 20px;
+    background: #f0f7f0;
+    border: 1px solid #c9e4ce;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.confirmacao h3 {
+    color: var(--cor-sucesso);
+    margin-bottom: 15px;
+}
+
+.confirmacao ul {
+    padding-left: 22px;
+}
+
+#detalhespedido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer {
+    padding: 22px 16px;
+    background-color: var(--cor-principal);
+}
+
+.footer p {
+    font-size:0.9rem;
+    color: #e0e8e1;
+    text-align: center;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete do Campus</title>
+    <meta name="description" content="Peça seus lanches favoritos na Lanchonete do Campus. Confira o cardápio, adicione produtos ao carrinho e envie seu pedido pelo WhatsApp.">
+    <meta name="keywords" content="lanchonete, lanchonete virtual, cardápio online, lanches, coxinha, pastel, açaí, hambúrguer, pedidos pelo WhatsApp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="images/favicon.png">
+    <script defer src="scripts/script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Lanchonete do Campus</h1>
+        <p>Cardápio Digital IFPE Palmares</p>
+    </header>
+    <main>
+        <section class="cardapio">
+            <h2>Cardápio</h2>
+            <form id="formulariobusca" role="search">
+                <label for="buscar">Buscar no cardápio</label>
+                <input type="search" id="buscar" name="buscar" autocomplete="off" placeholder="Digite o nome do lanche...">            
+            </form>
+            <p id="resultado-busca" class="mensagem" role="status" aria-live="polite"></p>
+            <div id="itenscardapio" class="lista-itens"></div>
+        </section>
+        <section class="carrinho">
+            <h2>Carrinho</h2>
+            <p id="resumo-quantidade">0 itens no carrinho</p>
+            <div id="itenscarrinho" class="lista-itens"></div>
+            <div class="resumo">
+                <p>Total de itens: <span id="total-itens">0</span></p>
+                <p>Valor total: R$ <span id="valor-total">0.00</span></p>
+            </div>
+             <button type="button" id="limpar-carrinho" class="botao botao-secundario">Limpar carrinho</button>
+        </section>
+        <section class="fazer-pedido">
+            <h2>Fazer Pedido</h2>
+            <form id="formulariopedido">                    
+                <label for="nome">Seu Nome</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" required maxlength="100">
+                <label for="tel">WhatsApp com DDD</label>
+                <input type="tel" id="tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="(81) 99999-9999" aria-describedby="tel-erro" required>
+                <p id="tel-erro" class="erro" hidden></p>
+                <button type="submit" class="botao botao-principal">Fazer pedido</button>
+            </form>
+            <div id="confirmacaopedido" class="confirmacao" role="status" aria-live="polite" hidden>
+                <h3>Resumo do pedido</h3>
+                <div id="detalhespedido"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>Lanchonete do Campus - IFPE Palmares 2026</p>
+    </footer>
+</body>
+</html>
