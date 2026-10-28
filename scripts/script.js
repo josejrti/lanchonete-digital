@@ -11,6 +11,7 @@ const textoCardapio = `[
     {"id": 10, "nome": "Suco de caju", "preco": 6.00}
 ]`;
 
+const whatsappEmpresa = "558196107201";
 const cardapio = JSON.parse(textoCardapio);
 const elementoBuscar = document.querySelector("#buscar");
 const formularioBusca = document.querySelector("#formulariobusca");
@@ -332,7 +333,6 @@ formularioPedido.addEventListener("submit", (evento) => {
             "Informe um WhatsApp válido com DDD (10 ou 11 dígitos).";
 
         erroTelefone.hidden = false;
-
         campoTelefone.setAttribute("aria-invalid", "true");
         campoTelefone.focus();
 
@@ -344,7 +344,24 @@ formularioPedido.addEventListener("submit", (evento) => {
         0
     );
 
-    // Criar os detalhes sem inserir dados do usuário como HTML.
+    // Monta a lista de produtos da mensagem.
+    const itensPedido = carrinho.map((produto) => {
+        return `- ${produto.nome}: ${formatarPreco(produto.preco)}`;
+    }).join("\n");
+
+    // Monta a mensagem que será aberta no WhatsApp.
+    const mensagemWhatsApp =
+        `Olá! Gostaria de fazer um pedido.\n\n` +
+        `Nome: ${nome}\n` +
+        `WhatsApp para contato: ${telefone}\n\n` +
+        `Itens do pedido:\n${itensPedido}\n\n` +
+        `Total de itens: ${carrinho.length}\n` +
+        `Valor total: ${formatarPreco(valorTotal)}`;
+
+    const urlWhatsApp =
+        `https://wa.me/${whatsappEmpresa}?text=${encodeURIComponent(mensagemWhatsApp)}`;
+
+    // Exibe o resumo na página.
     detalhesPedido.replaceChildren();
 
     const mensagem = document.createElement("p");
@@ -357,7 +374,6 @@ formularioPedido.addEventListener("submit", (evento) => {
 
     for (const produto of carrinho) {
         const item = document.createElement("li");
-
         item.textContent =
             `${produto.nome} - ${formatarPreco(produto.preco)}`;
 
@@ -367,25 +383,24 @@ formularioPedido.addEventListener("submit", (evento) => {
     const total = document.createElement("p");
     total.textContent = `Valor total: ${formatarPreco(valorTotal)}`;
 
-    const contato = document.createElement("p");
-    contato.textContent = `WhatsApp: ${telefone}`;
-
     detalhesPedido.append(
         mensagem,
         tituloItens,
         lista,
-        total,
-        contato
+        total
     );
 
     confirmacaoPedido.hidden = false;
 
-    // Leva o usuário até o resumo do pedido.
     confirmacaoPedido.scrollIntoView({
         behavior: "smooth",
         block: "nearest"
     });
+
+    // Abre o WhatsApp com o pedido preenchido.
+    window.open(urlWhatsApp, "_blank", "noopener,noreferrer");
 });
+
 
 
 buscarNoCardapio();
