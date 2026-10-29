@@ -1,3 +1,11 @@
+/* Alunos: 
+
+José Silvestre da Silva Júnior
+
+Samuel de Melo Martins 
+
+*/
+
 const textoCardapio = `[
     {"id": 1, "nome": "Coxinha", "preco": 5.00},
     {"id": 2, "nome": "Pastel", "preco": 8.00},
